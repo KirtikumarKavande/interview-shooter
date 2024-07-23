@@ -1,7 +1,14 @@
 import { Inter } from "next/font/google";
 import "./globals.css";
 
-
+import {
+  ClerkProvider,
+  SignInButton,
+  SignedIn,
+  SignedOut,
+  UserButton,
+} from "@clerk/nextjs";
+import { Button } from "@/components/ui/button";
 
 export const metadata = {
   title: "Create Next App",
@@ -11,7 +18,19 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className="border border-red-700">{children}</body>
+      <body className="border border-red-700">
+        <ClerkProvider>
+            <body>
+              <SignedOut>
+                <SignInButton />
+              </SignedOut>
+              <SignedIn>
+               <Button>SignedIn</Button>
+              </SignedIn>
+              {children}
+            </body>
+        </ClerkProvider>
+      </body>
     </html>
   );
 }
