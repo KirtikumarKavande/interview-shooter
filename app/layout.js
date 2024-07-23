@@ -18,17 +18,9 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className="border border-red-700">
+      <body >
         <ClerkProvider>
-            <body>
-              <SignedOut>
-                <SignInButton />
-              </SignedOut>
-              <SignedIn>
-               <Button>SignedIn</Button>
-              </SignedIn>
-              {children}
-            </body>
+         {children}
         </ClerkProvider>
       </body>
     </html>
