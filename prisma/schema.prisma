@@ -1,0 +1,21 @@
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+model mockInterview {
+  id Int @id @default(autoincrement())
+  jsonMockResp  String
+  jobPostion String  
+  jobDesc String  
+  jobExprience String  
+  createdBy String  
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now())
+  mockId String
+ 
+}       
