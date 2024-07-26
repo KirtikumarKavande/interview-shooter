@@ -18,10 +18,7 @@ const AddNewInterView = () => {
       <Model isOpen={isOpen} setIsOpen={setIsOpen}> 
       <JobInfoForm/>
       
-      <div className="flex gap-5  justify-end">
-        <Button variant="ghost" >Cancel</Button>
-        <Button variant="default" className=" bg-blue-800 hover:bg-blue-700">Start Interview</Button>
-      </div>
+   
       </Model>
     </div>
   );

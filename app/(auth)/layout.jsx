@@ -20,10 +20,10 @@ const Layout = ({ children }) => {
                 Welcome to Interview Shooter
               </h2>
 
-              <p className="mt-4 leading-relaxed text-white/90">
+              <div className="mt-4 leading-relaxed text-white/90">
                 Empower your career with AI-driven mock interviews. Perfect your
                 skills, ace the real thing.
-              </p>
+              </div>
             </div>
           </section>
 
@@ -48,14 +48,13 @@ const Layout = ({ children }) => {
                   </svg>
                 </a>
 
-                <h1 className="mt-2 text-2xl font-bold text-gray-900 sm:text-3xl md:text-4xl">
-                  Welcome to Squid 🦑
-                </h1>
+                <div className="mt-2 text-2xl font-bold text-gray-900 sm:text-3xl md:text-4xl">
+                  Welcome to Job Shooter
+                </div>
 
-                <p className="mt-4 leading-relaxed text-gray-500">
-                  Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                  Eligendi nam dolorum aliquam, quibusdam aperiam voluptatum.
-                </p>
+                <div className="mt-4 leading-relaxed text-gray-500">
+                Ace Your Interviews: Your Gateway to Career Success!"
+                </div>
               </div>
               <div className="w-full">{children}</div>
             </div>

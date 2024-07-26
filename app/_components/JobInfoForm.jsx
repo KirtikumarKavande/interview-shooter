@@ -1,26 +1,41 @@
-import React from "react";
+import { Button } from "@/components/ui/button";
+import React, { useState } from "react";
 
 const JobInfoForm = () => {
+  const [jobInfo, setJobInfo] = useState({
+    jobPosition: "",
+    jobDescription: "",
+    yearOfExperience: "fresher",
+  });
+  function handleSubmit(e) {
+    e.preventDefault();
+    console.log(jobInfo);
+  }
   return (
     <div>
       <div className="mx-auto max-w-screen-xl px-4 py-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-lg">
-          <h1 className="text-center text-2xl font-bold text-indigo-600 sm:text-3xl">
+          <div className="text-center text-2xl font-bold text-indigo-600 sm:text-3xl">
             Tell us about your job
-          </h1>
+          </div>
 
-          <p className="mx-auto mt-4 max-w-md text-center text-gray-500">
+          <div className="mx-auto mt-4 max-w-md text-center text-gray-500">
             Add Details about Job Position,Your Skills and Year of Experience
-          </p>
+          </div>
 
           <form
+            onSubmit={handleSubmit}
             action="#"
             className="mb-0 mt-6 space-y-4 rounded-lg p-4 shadow-xl sm:p-6 lg:p-8"
           >
             <div>
               <div className="relative">
                 <input
-                  className="w-full rounded-lg border border-gray-200 p-4 pe-12 text-sm shadow-sm"
+                
+                  onChange={(e) => {
+                    setJobInfo({ ...jobInfo, jobPosition: e.target.value });
+                  }}
+                  className="w-full rounded-lg border border-gray-200 p-4 pe-12 text-sm shadow-sm text-black"
                   placeholder="Job Position/Role Name"
                 />
 
@@ -28,7 +43,10 @@ const JobInfoForm = () => {
               </div>
             </div>
             <textarea
-              class="w-full rounded-lg border border-gray-200 p-3 text-sm"
+              onChange={(e) => {
+                setJobInfo({ ...jobInfo, jobDescription: e.target.value });
+              }}
+              class="w-full rounded-lg border border-gray-200 p-3 text-sm text-black"
               placeholder="Job Description/Tech Stack im Short"
               rows="8"
               id="message"
@@ -36,12 +54,28 @@ const JobInfoForm = () => {
             <div>
               <div className="relative">
                 <input
-                  className="w-full rounded-lg border border-gray-200 p-4 pe-12 text-sm shadow-sm"
+                  onChange={(e) => {
+                    setJobInfo({
+                      ...jobInfo,
+                      yearOfExperience: e.target.value,
+                    });
+                  }}
+                  className="w-full rounded-lg border border-gray-200 p-4 pe-12 text-sm text-black shadow-sm"
                   placeholder="No of Year Experience"
                 />
 
                 <span className="absolute inset-y-0 end-0 grid place-content-center px-4"></span>
               </div>
+            </div>
+            <div className="flex gap-5 mt-4 justify-end">
+              <Button variant="ghost">Cancel</Button>
+              <Button
+                type="submit"
+                variant="default"
+                className=" bg-blue-800 hover:bg-blue-700"
+              >
+                Start Interview
+              </Button>
             </div>
           </form>
         </div>
