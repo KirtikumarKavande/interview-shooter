@@ -1,12 +1,11 @@
-'use client';
+"use client";
 import { UserButton } from "@clerk/nextjs";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React from "react";
 
 const Header = () => {
-  const path=  usePathname()
-  console.log(path)
+  const path = usePathname();
   return (
     <header>
       <nav className="bg-white shadow-sm border-gray-200 px-4 lg:px-6 py-4 dark:bg-gray-800">
@@ -32,7 +31,9 @@ const Header = () => {
               <li>
                 <Link
                   href="/dashboard"
-                  className={`block py-2 pr-4 ${path==="/dashboard" ? "text-blue-700" :""} hover:text-blue-700 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700`}
+                  className={`block py-2 pr-4 ${
+                    path === "/dashboard" ? "text-blue-700" : ""
+                  } hover:text-blue-700 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700`}
                 >
                   Dashboard
                 </Link>
@@ -54,7 +55,7 @@ const Header = () => {
                 </Link>
               </li>
 
-          <li>
+              <li>
                 <Link
                   href="#"
                   className="block py-2 pr-4 hover:text-blue-700 pl-3 text-gray-700 border-b border-gray-100 hover:bg-gray-50 lg:hover:bg-transparent lg:border-0 lg:hover:text-primary-700 lg:p-0 dark:text-gray-400 lg:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white lg:dark:hover:bg-transparent dark:border-gray-700"

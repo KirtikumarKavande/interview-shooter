@@ -1,14 +1,7 @@
-import { Inter } from "next/font/google";
+import { Toaster } from "react-hot-toast";
 import "./globals.css";
 
-import {
-  ClerkProvider,
-  SignInButton,
-  SignedIn,
-  SignedOut,
-  UserButton,
-} from "@clerk/nextjs";
-import { Button } from "@/components/ui/button";
+import { ClerkProvider } from "@clerk/nextjs";
 
 export const metadata = {
   title: "Create Next App",
@@ -18,9 +11,10 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body >
+      <body>
         <ClerkProvider>
-         {children}
+          <Toaster />
+          {children}
         </ClerkProvider>
       </body>
     </html>
