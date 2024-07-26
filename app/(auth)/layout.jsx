@@ -13,8 +13,13 @@ const Layout = ({ children }) => {
             />
 
             <div className="hidden lg:relative lg:block lg:p-12">
-             
-              <img width="100" height="100" className="mx-auto" src="https://img.icons8.com/external-xnimrodx-lineal-color-xnimrodx/64/external-interview-communication-xnimrodx-lineal-color-xnimrodx.png" alt="external-interview-communication-xnimrodx-lineal-color-xnimrodx"/>
+              <img
+                width="100"
+                height="100"
+                className="mx-auto"
+                src="https://img.icons8.com/external-xnimrodx-lineal-color-xnimrodx/64/external-interview-communication-xnimrodx-lineal-color-xnimrodx.png"
+                alt="external-interview-communication-xnimrodx-lineal-color-xnimrodx"
+              />
 
               <h2 className="mt-6 text-2xl font-bold text-white sm:text-3xl md:text-4xl">
                 Welcome to Interview Shooter
@@ -53,7 +58,7 @@ const Layout = ({ children }) => {
                 </div>
 
                 <div className="mt-4 leading-relaxed text-gray-500">
-                Ace Your Interviews: Your Gateway to Career Success!"
+                  Ace Your Interviews: Your Gateway to Career Success!"
                 </div>
               </div>
               <div className="w-full">{children}</div>

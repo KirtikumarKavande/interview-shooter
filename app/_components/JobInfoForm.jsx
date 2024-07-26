@@ -35,14 +35,23 @@ const JobInfoForm = () => {
       .replace("```json", "")
       .replace("```", "");
     setIsLoading(false);
-    axios.post("http://localhost:3000/api/addjobinfo", {
-      jobPosition: jobInfo.jobPosition,
-      jobDescription: jobInfo.jobDescription,
-      yearOfExperience: jobInfo.yearOfExperience,
-      jsonMockResp: cleanQuestionAnswer,
-      mockId: uuidv4(),
-      createdBy: user?.primaryEmailAddress?.emailAddress,
-    });
+    if (!cleanQuestionAnswer) {
+      toast.error("Something went wrong");
+      return;
+    }
+    try {
+      axios.post("http://localhost:3000/api/addjobinfo", {
+        jobPosition: jobInfo.jobPosition,
+        jobDescription: jobInfo.jobDescription,
+        yearOfExperience: jobInfo.yearOfExperience,
+        jsonMockResp: cleanQuestionAnswer,
+        mockId: uuidv4(),
+        createdBy: user?.primaryEmailAddress?.emailAddress,
+      });
+    } catch (error) {
+      toast.error("Something went wrong");
+      console.log("error occurred", error);
+    }
   }
   return (
     <div>

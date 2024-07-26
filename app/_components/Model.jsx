@@ -7,7 +7,7 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 
-const Model = ({children, isOpen, setIsOpen}) => {
+const Model = ({ children, isOpen, setIsOpen }) => {
   return (
     <div>
       <Dialog open={isOpen} onOpenChange={setIsOpen}>

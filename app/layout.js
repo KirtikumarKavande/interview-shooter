@@ -1,11 +1,7 @@
-import  { Toaster } from 'react-hot-toast';
+import { Toaster } from "react-hot-toast";
 import "./globals.css";
 
-import {
-  ClerkProvider,
-
-} from "@clerk/nextjs";
-
+import { ClerkProvider } from "@clerk/nextjs";
 
 export const metadata = {
   title: "Create Next App",
@@ -15,10 +11,10 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body >
+      <body>
         <ClerkProvider>
-          <Toaster/>
-         {children}
+          <Toaster />
+          {children}
         </ClerkProvider>
       </body>
     </html>
