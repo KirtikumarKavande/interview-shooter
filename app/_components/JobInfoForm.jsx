@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import React, { useState } from "react";
 import toast from "react-hot-toast";
 import runGeminiScript from "./geminiHelper";
+import { Loader } from "lucide-react";
 
 const JobInfoForm = () => {
   const [jobInfo, setJobInfo] = useState({
@@ -9,7 +10,8 @@ const JobInfoForm = () => {
     jobDescription: "",
     yearOfExperience: "fresher",
   });
- async function handleSubmit(e) {
+  const [isLoading, setIsLoading] = useState(false);
+  async function handleSubmit(e) {
     e.preventDefault();
     if (
       jobInfo.jobPosition === "" ||
@@ -19,12 +21,17 @@ const JobInfoForm = () => {
       toast.error("Please fill all the fields");
       return;
     }
-   const questionAnswer= await runGeminiScript(jobInfo.jobPosition,jobInfo.jobDescription,jobInfo.yearOfExperience)
-  const cleanQuestionAnswer = questionAnswer.replace("```json","").replace("```","")
-   console.log(JSON.parse(cleanQuestionAnswer)) 
-   
-
-
+    setIsLoading(true);
+    const questionAnswer = await runGeminiScript(
+      jobInfo.jobPosition,
+      jobInfo.jobDescription,
+      jobInfo.yearOfExperience
+    );
+    const cleanQuestionAnswer = questionAnswer
+      .replace("```json", "")
+      .replace("```", "");
+    setIsLoading(false);
+    console.log(JSON.parse(cleanQuestionAnswer));
   }
   return (
     <div>
@@ -46,7 +53,7 @@ const JobInfoForm = () => {
             <div>
               <div className="relative">
                 <input
-                value={jobInfo.jobPosition}
+                  value={jobInfo.jobPosition}
                   onChange={(e) => {
                     setJobInfo({ ...jobInfo, jobPosition: e.target.value });
                   }}
@@ -58,7 +65,7 @@ const JobInfoForm = () => {
               </div>
             </div>
             <textarea
-            value={jobInfo.jobDescription}
+              value={jobInfo.jobDescription}
               onChange={(e) => {
                 setJobInfo({ ...jobInfo, jobDescription: e.target.value });
               }}
@@ -70,7 +77,7 @@ const JobInfoForm = () => {
             <div>
               <div className="relative">
                 <input
-                value={jobInfo.yearOfExperience}
+                  value={jobInfo.yearOfExperience}
                   onChange={(e) => {
                     setJobInfo({
                       ...jobInfo,
@@ -91,7 +98,14 @@ const JobInfoForm = () => {
                 variant="default"
                 className=" bg-blue-800 hover:bg-blue-700"
               >
-                Start Interview
+                {isLoading ? (
+                  <>
+                    <Loader className="animate-spin" />
+                    <span>Loading Questions</span>
+                  </>
+                ) : (
+                  "Start Interview"
+                )}
               </Button>
             </div>
           </form>
