@@ -3,13 +3,17 @@ import React, { useState } from "react";
 import toast from "react-hot-toast";
 import runGeminiScript from "./geminiHelper";
 import { Loader } from "lucide-react";
-
+import prisma from "@/lib/db";
+import { v4 as uuidv4 } from "uuid";
+import { useUser } from "@clerk/nextjs";
+import axios from "axios";
 const JobInfoForm = () => {
   const [jobInfo, setJobInfo] = useState({
     jobPosition: "",
     jobDescription: "",
     yearOfExperience: "fresher",
   });
+  const { user } = useUser();
   const [isLoading, setIsLoading] = useState(false);
   async function handleSubmit(e) {
     e.preventDefault();
@@ -31,7 +35,14 @@ const JobInfoForm = () => {
       .replace("```json", "")
       .replace("```", "");
     setIsLoading(false);
-    console.log(JSON.parse(cleanQuestionAnswer));
+    axios.post("http://localhost:3000/api/addjobinfo", {
+      jobPosition: jobInfo.jobPosition,
+      jobDescription: jobInfo.jobDescription,
+      yearOfExperience: jobInfo.yearOfExperience,
+      jsonMockResp: cleanQuestionAnswer,
+      mockId: uuidv4(),
+      createdBy: user?.primaryEmailAddress?.emailAddress,
+    });
   }
   return (
     <div>

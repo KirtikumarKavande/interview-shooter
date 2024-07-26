@@ -6,7 +6,6 @@ import React from "react";
 
 const Header = () => {
   const path=  usePathname()
-  console.log(path)
   return (
     <header>
       <nav className="bg-white shadow-sm border-gray-200 px-4 lg:px-6 py-4 dark:bg-gray-800">
