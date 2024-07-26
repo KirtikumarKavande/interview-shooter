@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import React, { useState } from "react";
 import toast from "react-hot-toast";
+import runGeminiScript from "./geminiHelper";
 
 const JobInfoForm = () => {
   const [jobInfo, setJobInfo] = useState({
@@ -8,7 +9,7 @@ const JobInfoForm = () => {
     jobDescription: "",
     yearOfExperience: "fresher",
   });
-  function handleSubmit(e) {
+ async function handleSubmit(e) {
     e.preventDefault();
     if (
       jobInfo.jobPosition === "" ||
@@ -18,7 +19,12 @@ const JobInfoForm = () => {
       toast.error("Please fill all the fields");
       return;
     }
-    console.log(jobInfo);
+   const questionAnswer= await runGeminiScript(jobInfo.jobPosition,jobInfo.jobDescription,jobInfo.yearOfExperience)
+  const cleanQuestionAnswer = questionAnswer.replace("```json","").replace("```","")
+   console.log(JSON.parse(cleanQuestionAnswer)) 
+   
+
+
   }
   return (
     <div>
