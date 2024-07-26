@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import React, { useState } from "react";
+import toast from "react-hot-toast";
 
 const JobInfoForm = () => {
   const [jobInfo, setJobInfo] = useState({
@@ -9,6 +10,14 @@ const JobInfoForm = () => {
   });
   function handleSubmit(e) {
     e.preventDefault();
+    if (
+      jobInfo.jobPosition === "" ||
+      jobInfo.jobDescription === "" ||
+      jobInfo.yearOfExperience === ""
+    ) {
+      toast.error("Please fill all the fields");
+      return;
+    }
     console.log(jobInfo);
   }
   return (
@@ -31,7 +40,7 @@ const JobInfoForm = () => {
             <div>
               <div className="relative">
                 <input
-                
+                value={jobInfo.jobPosition}
                   onChange={(e) => {
                     setJobInfo({ ...jobInfo, jobPosition: e.target.value });
                   }}
@@ -43,6 +52,7 @@ const JobInfoForm = () => {
               </div>
             </div>
             <textarea
+            value={jobInfo.jobDescription}
               onChange={(e) => {
                 setJobInfo({ ...jobInfo, jobDescription: e.target.value });
               }}
@@ -54,6 +64,7 @@ const JobInfoForm = () => {
             <div>
               <div className="relative">
                 <input
+                value={jobInfo.yearOfExperience}
                   onChange={(e) => {
                     setJobInfo({
                       ...jobInfo,

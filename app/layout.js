@@ -1,14 +1,11 @@
-import { Inter } from "next/font/google";
+import  { Toaster } from 'react-hot-toast';
 import "./globals.css";
 
 import {
   ClerkProvider,
-  SignInButton,
-  SignedIn,
-  SignedOut,
-  UserButton,
+
 } from "@clerk/nextjs";
-import { Button } from "@/components/ui/button";
+
 
 export const metadata = {
   title: "Create Next App",
@@ -20,6 +17,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body >
         <ClerkProvider>
+          <Toaster/>
          {children}
         </ClerkProvider>
       </body>
