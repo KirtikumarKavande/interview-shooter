@@ -1,3 +1,4 @@
+import prisma from "@/lib/db";
 import { NextResponse } from "next/server";
 export async function POST(req, res) {
   const {
@@ -20,9 +21,11 @@ export async function POST(req, res) {
         createdBy: createdBy,
       },
     });
-    NextResponse.json(response.mockId);
+   return  NextResponse.json({mockId:response.mockId});
   } catch (error) {
     console.log(error);
+   return NextResponse.json({ error: "something went wrong" });
   }
-  return NextResponse.json({ message: "Hello from Next.js!" });
 }
+
+
