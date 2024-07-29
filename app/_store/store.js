@@ -5,7 +5,7 @@ import interviewInfoReducer from './interviewInfo.slice'
 
 const store = configureStore({
   reducer: {
-    interviewInfoReducer:interviewInfoReducer
+    interviewInfo:interviewInfoReducer
   },
 })
 
