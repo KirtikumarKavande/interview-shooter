@@ -1,10 +1,15 @@
 "use client";
+import { addInterviewInfo } from "@/app/_store/interviewInfo.slice";
 import axios from "axios";
+import Link from 'next/link';
 import React, { useEffect } from "react";
 import toast from "react-hot-toast";
+import { useDispatch } from "react-redux";
 
 const Interview = ({ params }) => {
+  const dispatch = useDispatch()
   useEffect(() => {
+    console.log("myparams", params);
     if (params?.interviewid) {
       getQuestionAndAnswer();
     }
@@ -14,12 +19,18 @@ const Interview = ({ params }) => {
       const response = await axios.get(
         `http://localhost:3000/api/addjobinfo/${params.interviewid}`
       );
-      console.log("my response",response);
+      dispatch(addInterviewInfo(response.data))
     } catch (error) {
       toast.error("something went wrong");
     }
   }
-  return <div>Interview</div>;
+  return (
+    <div>
+      <Link href={`/dashboard/interview/${params.interviewid}/start`}>
+        start Interview
+      </Link>
+    </div>
+  );
 };
 
 export default Interview;

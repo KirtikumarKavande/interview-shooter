@@ -17,7 +17,7 @@ const JobInfoForm = () => {
   });
   const { user } = useUser();
   const [isLoading, setIsLoading] = useState(false);
-const router=  useRouter()
+  const router = useRouter();
   async function handleSubmit(e) {
     e.preventDefault();
     if (
@@ -43,16 +43,19 @@ const router=  useRouter()
       return;
     }
     try {
-      const response = await axios.post("http://localhost:3000/api/addjobinfo", {
-        jobPosition: jobInfo.jobPosition,
-        jobDescription: jobInfo.jobDescription,
-        yearOfExperience: jobInfo.yearOfExperience,
-        jsonMockResp: cleanQuestionAnswer,
-        mockId: uuidv4(),
-        createdBy: user?.primaryEmailAddress?.emailAddress,
-      });
-      console.log("kk",response)
-      
+      const response = await axios.post(
+        "http://localhost:3000/api/addjobinfo",
+        {
+          jobPosition: jobInfo.jobPosition,
+          jobDescription: jobInfo.jobDescription,
+          yearOfExperience: jobInfo.yearOfExperience,
+          jsonMockResp: cleanQuestionAnswer,
+          mockId: uuidv4(),
+          createdBy: user?.primaryEmailAddress?.emailAddress,
+        }
+      );
+      console.log("kk", response);
+
       router.push(`/dashboard/interview/${response.data.mockId}`);
     } catch (error) {
       toast.error("Something went wrong");

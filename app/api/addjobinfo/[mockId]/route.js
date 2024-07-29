@@ -3,7 +3,6 @@ import { NextResponse } from "next/server";
 
 export async function GET(req, { params }) {
   try {
-    console.log(">>>>",params.mockId)
     const response = await prisma.mockInterview.findFirst({
       where: { mockId: params.mockId },
     });
