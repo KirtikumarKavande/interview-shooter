@@ -12,8 +12,8 @@ const QuestionSection = ({ interviewInfo, activeQuestionIndex }) => {
           interviewInfo?.map((item, index) => (
             <h2
               className={`${
-                activeQuestionIndex === index && "bg-blue-600 text-white"
-              } p-2 bg-secondary rounded-full text-xs md:text-sm text-center cursor-pointer
+                activeQuestionIndex === index ? "bg-blue-600 text-white":"bg-secondary"
+              } p-2  rounded-full text-xs md:text-sm text-center cursor-pointer
           `}
             >
               Question #{index + 1}
