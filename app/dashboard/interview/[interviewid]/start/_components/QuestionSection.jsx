@@ -3,7 +3,7 @@ import { Lightbulb, Volume2 } from "lucide-react";
 import React from "react";
 import toast from "react-hot-toast";
 
-const QuestionSection = ({ interviewInfo, activeQuestionIndex }) => {
+const QuestionSection = ({ interviewInfo, activeQuestionIndex,setActiveQuestionIndex }) => {
 const textToSpeech=(text)=>{
   if('speechSynthesis' in window){
     const speech = new SpeechSynthesisUtterance();
@@ -25,6 +25,13 @@ const textToSpeech=(text)=>{
         {interviewInfo.length > 0 &&
           interviewInfo?.map((item, index) => (
             <h2
+            onClick={()=>{
+              console.log(activeQuestionIndex,index)
+              if(activeQuestionIndex+1===index){
+                setActiveQuestionIndex(activeQuestionIndex+1)
+              }
+
+            }}
               className={`${
                 activeQuestionIndex === index ? "bg-blue-600 text-white":"bg-secondary"
               } p-2  rounded-full text-xs md:text-sm text-center cursor-pointer

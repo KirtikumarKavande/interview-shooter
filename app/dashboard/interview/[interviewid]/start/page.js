@@ -22,6 +22,7 @@ const StartInterview = () => {
         <QuestionSection
           interviewInfo={interviewData}
           activeQuestionIndex={activeQuestionIndex}
+          setActiveQuestionIndex={setActiveQuestionIndex}
         />
         <RecordAnswerSection />
 
