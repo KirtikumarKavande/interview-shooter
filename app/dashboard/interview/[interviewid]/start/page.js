@@ -10,8 +10,8 @@ const StartInterview = () => {
   const interviewInfo = useSelector((store) => store.interviewInfo);
   const [activeQuestionIndex, setActiveQuestionIndex] = useState(2);
   useEffect(() => {
-    if (interviewInfo?.jsonMockResp) {
-      setInterviewData(JSON.parse(interviewInfo?.jsonMockResp));
+    if (interviewInfo?.jsonMockQuestion) {
+      setInterviewData(JSON.parse(interviewInfo?.jsonMockQuestion));
     }
   }, [interviewInfo?.mockId]);
 

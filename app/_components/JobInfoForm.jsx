@@ -8,6 +8,7 @@ import { v4 as uuidv4 } from "uuid";
 import { useUser } from "@clerk/nextjs";
 import axios from "axios";
 import { useRouter } from "next/navigation";
+import { jobInformation } from "../_utilis/helper";
 
 const JobInfoForm = () => {
   const [jobInfo, setJobInfo] = useState({
@@ -29,11 +30,12 @@ const JobInfoForm = () => {
       return;
     }
     setIsLoading(true);
-    const questionAnswer = await runGeminiScript(
+    const questionAnswer = await jobInformation(
       jobInfo.jobPosition,
       jobInfo.jobDescription,
       jobInfo.yearOfExperience
     );
+    console.log("hi there",questionAnswer)
     const cleanQuestionAnswer = questionAnswer
       .replace("```json", "")
       .replace("```", "");
@@ -49,7 +51,7 @@ const JobInfoForm = () => {
           jobPosition: jobInfo.jobPosition,
           jobDescription: jobInfo.jobDescription,
           yearOfExperience: jobInfo.yearOfExperience,
-          jsonMockResp: cleanQuestionAnswer,
+          jsonMockQuestion: cleanQuestionAnswer,
           mockId: uuidv4(),
           createdBy: user?.primaryEmailAddress?.emailAddress,
         }
