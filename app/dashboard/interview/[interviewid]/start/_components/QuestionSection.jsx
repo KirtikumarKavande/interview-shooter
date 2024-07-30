@@ -1,9 +1,23 @@
 import { noteText } from "@/app/_utilis/constants";
-import { Lightbulb } from "lucide-react";
+import { Lightbulb, Volume2 } from "lucide-react";
 import React from "react";
+import toast from "react-hot-toast";
 
 const QuestionSection = ({ interviewInfo, activeQuestionIndex }) => {
-  console.log("kirti", interviewInfo);
+const textToSpeech=(text)=>{
+  if('speechSynthesis' in window){
+    const speech = new SpeechSynthesisUtterance();
+    speech.lang = "en-US";
+    speech.text = text;
+    speech.volume = 1;
+    speech.rate = 1;
+    speech.pitch = 1;
+    window.speechSynthesis.speak(speech);
+  }else{
+    toast.error("your browser does not support speech synthesis");
+  }
+
+}
 
   return (
     <div className="p-5 border rounded-lg my-10">
@@ -23,6 +37,9 @@ const QuestionSection = ({ interviewInfo, activeQuestionIndex }) => {
       <h2 className="my-5 text-md md:text-lg font-semibold">
         {interviewInfo[activeQuestionIndex]?.question}
       </h2>
+      <Volume2 className="cursor-pointer" onClick={()=>{
+        textToSpeech(interviewInfo[activeQuestionIndex]?.question)
+      }}/>
       <div className="border rounded-lg p-5 bg-blue-100 mt-10">
         <h2 className="flex gap-2 items-center text-blue-700">
           <Lightbulb />

@@ -6,25 +6,22 @@ import toast from "react-hot-toast";
 import { Dot } from "lucide-react";
 
 const RecordAnswerSection = () => {
-  const {
-    error,
-    isRecording,
-    results,
-    startSpeechToText,
-    stopSpeechToText,
-  } = useSpeechToText({
-    continuous: true,
-    useLegacyResults: false,
-  });
+  const { error, isRecording, results, startSpeechToText, stopSpeechToText } =
+    useSpeechToText({
+      continuous: true,
+      useLegacyResults: false,
+    });
   if (error) {
     toast.error("Web Speech API is not available in this browser");
   }
-const[userSpeech,setUserSpeech]=useState("")
-  useEffect(()=>{
-    {results.map((result) => {
-      setUserSpeech(userSpeech+result.transcript)
-    })}
-  },[results.length])
+  const [userSpeech, setUserSpeech] = useState("");
+  useEffect(() => {
+    {
+      results.map((result) => {
+        setUserSpeech(userSpeech + result.transcript);
+      });
+    }
+  }, [results.length]);
 
   return (
     <div className="flex flex-col items-center justify-center">
@@ -46,11 +43,15 @@ const[userSpeech,setUserSpeech]=useState("")
         className="mt-5"
       >
         {" "}
-        {isRecording ?<div className="flex  items-center ">
-          <span>Stop Recording</span>
-        </div> : "Start Recording"}
+        {isRecording ? (
+          <div className="flex  items-center ">
+            <span>Stop Recording</span>
+          </div>
+        ) : (
+          "Start Recording"
+        )}
       </Button>
-       <ul>
+      <ul>
         {results.map((result) => (
           <li key={result.timestamp}>{result.transcript}</li>
         ))}
