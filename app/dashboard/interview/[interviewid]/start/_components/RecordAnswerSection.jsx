@@ -3,7 +3,6 @@ import React, { useEffect, useState } from "react";
 import Webcam from "react-webcam";
 import useSpeechToText from "react-hook-speech-to-text";
 import toast from "react-hot-toast";
-import { Dot } from "lucide-react";
 
 const RecordAnswerSection = () => {
   const { error, isRecording, results, startSpeechToText, stopSpeechToText } =
