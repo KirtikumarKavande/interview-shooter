@@ -7,6 +7,8 @@ import prisma from "@/lib/db";
 import { v4 as uuidv4 } from "uuid";
 import { useUser } from "@clerk/nextjs";
 import axios from "axios";
+import { useRouter } from "next/navigation";
+
 const JobInfoForm = () => {
   const [jobInfo, setJobInfo] = useState({
     jobPosition: "",
@@ -15,6 +17,7 @@ const JobInfoForm = () => {
   });
   const { user } = useUser();
   const [isLoading, setIsLoading] = useState(false);
+  const router = useRouter();
   async function handleSubmit(e) {
     e.preventDefault();
     if (
@@ -40,14 +43,20 @@ const JobInfoForm = () => {
       return;
     }
     try {
-      axios.post("http://localhost:3000/api/addjobinfo", {
-        jobPosition: jobInfo.jobPosition,
-        jobDescription: jobInfo.jobDescription,
-        yearOfExperience: jobInfo.yearOfExperience,
-        jsonMockResp: cleanQuestionAnswer,
-        mockId: uuidv4(),
-        createdBy: user?.primaryEmailAddress?.emailAddress,
-      });
+      const response = await axios.post(
+        "http://localhost:3000/api/addjobinfo",
+        {
+          jobPosition: jobInfo.jobPosition,
+          jobDescription: jobInfo.jobDescription,
+          yearOfExperience: jobInfo.yearOfExperience,
+          jsonMockResp: cleanQuestionAnswer,
+          mockId: uuidv4(),
+          createdBy: user?.primaryEmailAddress?.emailAddress,
+        }
+      );
+      console.log("kk", response);
+
+      router.push(`/dashboard/interview/${response.data.mockId}`);
     } catch (error) {
       toast.error("Something went wrong");
       console.log("error occurred", error);
