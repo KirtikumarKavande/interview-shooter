@@ -5,7 +5,7 @@ export async function POST(req, res) {
     jobPosition,
     jobDescription,
     yearOfExperience,
-    jsonMockResp,
+    jsonMockQuestion,
     mockId,
     createdBy,
   } = await req.json();
@@ -16,7 +16,7 @@ export async function POST(req, res) {
         jobPosition: jobPosition,
         jobDesc: jobDescription,
         jobExperience: yearOfExperience,
-        jsonMockResp: jsonMockResp,
+        jsonMockQuestion: jsonMockQuestion,
         mockId: mockId,
         createdBy: createdBy,
       },

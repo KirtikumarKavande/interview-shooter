@@ -13,14 +13,12 @@ const generationConfig = {
   // responseMimeType: "text/plain",
 };
 
-async function runGeminiScript(JobPosition, JobDescription, yearOfExperience) {
+async function runGeminiScript(str) {
   const chatSession = model.startChat({
     generationConfig,
   });
 
-  const result = await chatSession.sendMessage(
-    `JobPosition:${JobPosition},Job description:${JobDescription}, yeas of experience:${yearOfExperience} depending on information give me 7 interview question and answer in json format don't give extra things just give array of object`
-  );
+  const result = await chatSession.sendMessage(str)
   return result.response.text();
 }
 
