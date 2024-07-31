@@ -35,7 +35,7 @@ const JobInfoForm = () => {
       jobInfo.jobDescription,
       jobInfo.yearOfExperience
     );
-    console.log("hi there",questionAnswer)
+    console.log("hi there", questionAnswer);
     const cleanQuestionAnswer = questionAnswer
       .replace("```json", "")
       .replace("```", "");
@@ -57,8 +57,9 @@ const JobInfoForm = () => {
         }
       );
       console.log("kk", response);
-
-      router.push(`/dashboard/interview/${response.data.mockId}`);
+      if (response.data.mockId) {
+        router.push(`/dashboard/interview/${response.data.mockId}`);
+      }
     } catch (error) {
       toast.error("Something went wrong");
       console.log("error occurred", error);

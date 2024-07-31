@@ -6,6 +6,7 @@ import { useSelector } from "react-redux";
 import RecordAnswerSection from "./_components/RecordAnswerSection";
 import { Button } from "@/components/ui/button";
 import { jobFeedBack } from "@/app/_utilis/helper";
+import axios from "axios";
 
 const StartInterview = () => {
   const [interviewData, setInterviewData] = useState([]);
@@ -23,7 +24,11 @@ const StartInterview = () => {
   const generateFeedbackFromGemini = async () => {
     let parsedResponse = JSON.parse(jobInfo.jsonMockQuestion)
     const geminiResponse = await jobFeedBack(parsedResponse[activeQuestionIndex].question, userSpeech)
-    console.log(geminiResponse)
+    const data=await axios.post( "http://localhost:3000/api/feedback",{
+      geminiResponse:geminiResponse.replace("```json","").replace("```",""),
+      mockInterviewId:interviewInfo.mockId
+    })
+    console.log(">>>>",data)
   }
   return (
     <div>
