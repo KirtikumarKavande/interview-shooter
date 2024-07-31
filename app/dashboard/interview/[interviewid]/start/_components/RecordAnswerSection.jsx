@@ -4,7 +4,7 @@ import Webcam from "react-webcam";
 import useSpeechToText from "react-hook-speech-to-text";
 import toast from "react-hot-toast";
 
-const RecordAnswerSection = () => {
+const RecordAnswerSection = ({userSpeech,setUserSpeech}) => {
   const { error, isRecording, results, startSpeechToText, stopSpeechToText } =
     useSpeechToText({
       continuous: true,
@@ -13,7 +13,6 @@ const RecordAnswerSection = () => {
   if (error) {
     toast.error("Web Speech API is not available in this browser");
   }
-  const [userSpeech, setUserSpeech] = useState("");
   useEffect(() => {
     {
       results.map((result) => {
@@ -50,11 +49,7 @@ const RecordAnswerSection = () => {
           "Start Recording"
         )}
       </Button>
-      <ul>
-        {results.map((result) => (
-          <li key={result.timestamp}>{result.transcript}</li>
-        ))}
-      </ul>
+      
     </div>
   );
 };
