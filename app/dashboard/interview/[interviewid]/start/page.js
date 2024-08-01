@@ -15,7 +15,7 @@ const StartInterview = () => {
   const [userSpeech, setUserSpeech] = useState("");
   const jobInfo = useSelector(state => state.interviewInfo)
 
-
+console.log("user speech",userSpeech)
   useEffect(() => {
     if (interviewInfo?.jsonMockQuestion) {
       setInterviewData(JSON.parse(interviewInfo?.jsonMockQuestion));
@@ -26,8 +26,11 @@ const StartInterview = () => {
     const geminiResponse = await jobFeedBack(parsedResponse[activeQuestionIndex].question, userSpeech)
     const data=await axios.post( "http://localhost:3000/api/feedback",{
       geminiResponse:geminiResponse.replace("```json","").replace("```",""),
-      mockInterviewId:interviewInfo.mockId
+      mockInterviewId:interviewInfo.mockId,
+      question:activeQuestionIndex+1
     })
+    
+    setUserSpeech("")
     console.log(">>>>",data)
   }
   return (

@@ -124,7 +124,7 @@ const JobInfoForm = () => {
               </div>
             </div>
             <div className="flex gap-5 mt-4 justify-end">
-              <Button variant="ghost">Cancel</Button>
+              <Button variant="ghost" type="button">Cancel</Button>
               <Button
                 type="submit"
                 variant="default"

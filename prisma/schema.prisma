@@ -25,4 +25,5 @@ model feedback {
   feedback         String
   mockInterview    mockInterview @relation(fields: [mockInterviewId], references: [mockId])
   mockInterviewId  String
+  question         Int
 }
