@@ -12,7 +12,6 @@ export async function GET(req,{params}) {
                 feedbacks: true
               }
         });
-        console.log("good day",response)
 
         return NextResponse.json({response });
     } catch (error) {

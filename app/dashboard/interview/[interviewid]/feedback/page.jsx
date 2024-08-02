@@ -7,7 +7,8 @@ const Feedback = ({params}) => {
     fetchFeedbackAccordingToMockId()
   },[])
 async function fetchFeedbackAccordingToMockId(){
- await axios.get(`http://localhost:3000/api/feedback/${params.interviewid}`  )
+ const responseData= await axios.get(`http://localhost:3000/api/feedback/${params.interviewid}`  )
+ console.log("feedback response",responseData)
 }
 
   return (

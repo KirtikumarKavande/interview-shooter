@@ -17,7 +17,6 @@ const StartInterview = () => {
   const jobInfo = useSelector(state => state.interviewInfo)
   const router=useRouter()
 
-  console.log("user speech", userSpeech)
   useEffect(() => {
     if (interviewInfo?.jsonMockQuestion) {
       setInterviewData(JSON.parse(interviewInfo?.jsonMockQuestion));
@@ -33,7 +32,6 @@ const StartInterview = () => {
     })
 
     setUserSpeech("")
-    console.log(">>>>", data)
   }
 function nextQuestion(){
   setActiveQuestionIndex(activeQuestionIndex + 1)

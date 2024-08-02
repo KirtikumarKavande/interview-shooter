@@ -35,7 +35,6 @@ const JobInfoForm = () => {
       jobInfo.jobDescription,
       jobInfo.yearOfExperience
     );
-    console.log("hi there", questionAnswer);
     const cleanQuestionAnswer = questionAnswer
       .replace("```json", "")
       .replace("```", "");
@@ -56,7 +55,6 @@ const JobInfoForm = () => {
           createdBy: user?.primaryEmailAddress?.emailAddress,
         }
       );
-      console.log("kk", response);
       if (response.data.mockId) {
         router.push(`/dashboard/interview/${response.data.mockId}`);
       }

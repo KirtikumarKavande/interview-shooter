@@ -6,7 +6,6 @@ export async function GET(req, { params }) {
     const response = await prisma.mockInterview.findFirst({
       where: { mockId: params.mockId },
     });
-console.log("correct response",response)
     return NextResponse.json(response);
   } catch (error) {
     console.log(error);

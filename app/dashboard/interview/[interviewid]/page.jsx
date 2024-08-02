@@ -9,7 +9,6 @@ import { useDispatch } from "react-redux";
 const Interview = ({ params }) => {
   const dispatch = useDispatch()
   useEffect(() => {
-    console.log("myparams", params);
     if (params?.interviewid) {
       getQuestionAndAnswer();
     }

@@ -26,7 +26,6 @@ const textToSpeech=(text)=>{
           interviewInfo?.map((item, index) => (
             <h2
             onClick={()=>{
-              console.log(activeQuestionIndex,index)
               if(activeQuestionIndex+1===index){
                 setActiveQuestionIndex(activeQuestionIndex+1)
               }
