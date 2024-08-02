@@ -7,6 +7,7 @@ import RecordAnswerSection from "./_components/RecordAnswerSection";
 import { Button } from "@/components/ui/button";
 import { jobFeedBack } from "@/app/_utilis/helper";
 import axios from "axios";
+import { useRouter } from "next/navigation";
 
 const StartInterview = () => {
   const [interviewData, setInterviewData] = useState([]);
@@ -14,8 +15,9 @@ const StartInterview = () => {
   const [activeQuestionIndex, setActiveQuestionIndex] = useState(0);
   const [userSpeech, setUserSpeech] = useState("");
   const jobInfo = useSelector(state => state.interviewInfo)
+  const router=useRouter()
 
-console.log("user speech",userSpeech)
+  console.log("user speech", userSpeech)
   useEffect(() => {
     if (interviewInfo?.jsonMockQuestion) {
       setInterviewData(JSON.parse(interviewInfo?.jsonMockQuestion));
@@ -24,15 +26,21 @@ console.log("user speech",userSpeech)
   const generateFeedbackFromGemini = async () => {
     let parsedResponse = JSON.parse(jobInfo.jsonMockQuestion)
     const geminiResponse = await jobFeedBack(parsedResponse[activeQuestionIndex].question, userSpeech)
-    const data=await axios.post( "http://localhost:3000/api/feedback",{
-      geminiResponse:geminiResponse.replace("```json","").replace("```",""),
-      mockInterviewId:interviewInfo.mockId,
-      question:activeQuestionIndex+1
+    const data = await axios.post("http://localhost:3000/api/feedback", {
+      geminiResponse: geminiResponse.replace("```json", "").replace("```", ""),
+      mockInterviewId: interviewInfo.mockId,
+      question: activeQuestionIndex + 1
     })
-    
+
     setUserSpeech("")
-    console.log(">>>>",data)
+    console.log(">>>>", data)
   }
+function nextQuestion(){
+  setActiveQuestionIndex(activeQuestionIndex + 1)
+  if(activeQuestionIndex===interviewData?.length-1){
+    router.push(`/dashboard/interview/${interviewInfo.interviewId}/feedback`)
+  }
+}
   return (
     <div>
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
@@ -47,11 +55,12 @@ console.log("user speech",userSpeech)
       </div>
       <div onClick={generateFeedbackFromGemini}>
         <div className="hidden lg:flex justify-end -mt-14 " >
-          <Button className="bg-blue-600 text-white hover:bg-blue-500" onClick={() => setActiveQuestionIndex(activeQuestionIndex + 1)}>{activeQuestionIndex === interviewData?.length - 1 ? "Finish" : "Next Question"}</Button>
+          <Button className="bg-blue-600 text-white hover:bg-blue-500" onClick={nextQuestion}>{activeQuestionIndex === interviewData?.length - 1 ? "Finish" : "Next Question"}</Button>
         </div>
         <div className="flex lg:hidden justify-end my-2 ">
-          <Button className="bg-blue-600 text-white hover:bg-blue-500" onClick={() => setActiveQuestionIndex(activeQuestionIndex + 1)}>{activeQuestionIndex === interviewData?.length - 1 ? "Finish" : "Next Question"}</Button>
+          <Button className="bg-blue-600 text-white hover:bg-blue-500" onClick={nextQuestion}>{activeQuestionIndex === interviewData?.length - 1 ? "Finish" : "Next Question"}</Button>
         </div>
+
       </div>
     </div>
   );
