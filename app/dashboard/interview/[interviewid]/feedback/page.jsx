@@ -65,12 +65,10 @@ const Feedback = ({ params }) => {
   };
 
   return (
-    <div className="p-10">
+    <div className="p-10 space-y-2">
       <h2 className="font-bold text-3xl text-green-500">Congratulations</h2>
       <h2 className="font-bold text-2xl">Here is your Interview feedback </h2>
-      <h2 className="text-blue-600 text-lg my-3">
-        Your Overall Rating: <strong>7/10</strong>
-      </h2>
+      
       <h2 className="text-gray-500 text-sm">
         Find Question, its ideal answer, rating according to your answer & area
         of improvement{" "}

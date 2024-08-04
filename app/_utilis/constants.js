@@ -1,1 +1,1 @@
-export const noteText = "When you are ready to answer a question, click on 'Record Answer'. At the end of the interview, you will receive feedback along with the correct answers for each question. This will allow you to compare your responses with the correct answers"
+export const noteText = "When you are ready to answer a question, click on 'Start Answer'.after recording don't forgot to stop regarding otherwise your answer will not be recorded. At the end of the interview, you will receive feedback along with the correct answers for each question. "

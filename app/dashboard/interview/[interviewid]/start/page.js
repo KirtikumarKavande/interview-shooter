@@ -9,14 +9,14 @@ import { jobFeedBack } from "@/app/_utilis/helper";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 
-const StartInterview = () => {
+const StartInterview = ({params}) => {
   const [interviewData, setInterviewData] = useState([]);
   const interviewInfo = useSelector((store) => store.interviewInfo);
   const [activeQuestionIndex, setActiveQuestionIndex] = useState(0);
   const [userSpeech, setUserSpeech] = useState("");
   const jobInfo = useSelector(state => state.interviewInfo)
   const router=useRouter()
-
+console.log(">>>>>",params)
   useEffect(() => {
     if (interviewInfo?.jsonMockQuestion) {
       setInterviewData(JSON.parse(interviewInfo?.jsonMockQuestion));
@@ -36,7 +36,7 @@ const StartInterview = () => {
 function nextQuestion(){
   setActiveQuestionIndex(activeQuestionIndex + 1)
   if(activeQuestionIndex===interviewData?.length-1){
-    router.push(`/dashboard/interview/${interviewInfo.interviewId}/feedback`)
+    router.push(`/dashboard/interview/${params.interviewid}/feedback`)
   }
 }
   return (
@@ -51,7 +51,7 @@ function nextQuestion(){
         <RecordAnswerSection setUserSpeech={setUserSpeech} userSpeech={userSpeech} />
 
       </div>
-      <div onClick={generateFeedbackFromGemini}>
+      <div onClick={generateFeedbackFromGemini} >
         <div className="hidden lg:flex justify-end -mt-14 " >
           <Button className="bg-blue-600 text-white hover:bg-blue-500" onClick={nextQuestion}>{activeQuestionIndex === interviewData?.length - 1 ? "Finish" : "Next Question"}</Button>
         </div>
