@@ -7,10 +7,12 @@ import {
   CollapsibleTrigger,
 } from "@/components/ui/collapsible";
 import { ChevronDown } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { useRouter } from "next/navigation";
 
 const Feedback = ({ params }) => {
   const [feedbackData, setFeedbackData] = useState([]);
-
+const router=useRouter()
   useEffect(() => {
     const fetchFeedbackAccordingToMockId = async () => {
       try {
@@ -99,6 +101,8 @@ const Feedback = ({ params }) => {
           </CollapsibleContent>
         </Collapsible>
       ))}
+      
+      <Button onClick={()=>{router.push("/dashboard")}}>Go Home</Button>
     </div>
   );
 };
