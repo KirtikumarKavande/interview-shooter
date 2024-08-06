@@ -16,7 +16,6 @@ const StartInterview = ({params}) => {
   const [userSpeech, setUserSpeech] = useState("");
   const jobInfo = useSelector(state => state.interviewInfo)
   const router=useRouter()
-console.log(">>>>>",params)
   useEffect(() => {
     if (interviewInfo?.jsonMockQuestion) {
       setInterviewData(JSON.parse(interviewInfo?.jsonMockQuestion));

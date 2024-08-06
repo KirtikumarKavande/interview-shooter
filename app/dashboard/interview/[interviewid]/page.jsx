@@ -13,7 +13,6 @@ const Interview = ({ params }) => {
   const dispatch = useDispatch();
   const [webcamEnabled, setWebcamEnabled] = useState(false);
   const interViewInfo = useSelector((state) => state.interviewInfo);
-  console.log("redux store", interViewInfo);
   useEffect(() => {
     if (params?.interviewid) {
       getQuestionAndAnswer();

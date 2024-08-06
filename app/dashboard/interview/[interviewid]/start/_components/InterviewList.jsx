@@ -17,7 +17,6 @@ const InterviewList = () => {
     });
     setInterview(res.data);
   };
-  console.log("ccc",interview)
   return (
     <div>
       <h2 className="font-medium text-xl pt-2">Previous Interview List</h2>
