@@ -45,7 +45,7 @@ const JobInfoForm = () => {
     }
     try {
       const response = await axios.post(
-        "http://localhost:3000/api/addjobinfo",
+        `${process.env.NEXT_PUBLIC_BASE_URL}/api/addjobinfo`,
         {
           jobPosition: jobInfo.jobPosition,
           jobDescription: jobInfo.jobDescription,

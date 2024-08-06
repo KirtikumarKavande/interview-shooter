@@ -17,7 +17,7 @@ const router=useRouter()
     const fetchFeedbackAccordingToMockId = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:3000/api/feedback/${params.interviewid}`
+          `${process.env.NEXT_PUBLIC_BASE_URL}/api/feedback/${params.interviewid}`
         );
         const data = response.data[0];
         if (data) {

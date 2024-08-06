@@ -24,7 +24,7 @@ const StartInterview = ({params}) => {
   const generateFeedbackFromGemini = async () => {
     let parsedResponse = JSON.parse(jobInfo.jsonMockQuestion)
     const geminiResponse = await jobFeedBack(parsedResponse[activeQuestionIndex].question, userSpeech)
-    const data = await axios.post("http://localhost:3000/api/feedback", {
+    const data = await axios.post(`${process.env.NEXT_PUBLIC_BASE_URL}/api/feedback`, {
       geminiResponse: geminiResponse.replace("```json", "").replace("```", ""),
       mockInterviewId: interviewInfo.mockId,
       question: activeQuestionIndex + 1

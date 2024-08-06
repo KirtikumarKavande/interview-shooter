@@ -19,7 +19,7 @@ const InterviewList = () => {
   const getInterViewList = async () => {
     try {
       setLoading(true);
-      const res = await axios.post("http://localhost:3000/api/getjobinfo", {
+      const res = await axios.post(`${process.env.NEXT_PUBLIC_BASE_URL}/api/getjobinfo`, {
         email: user.primaryEmailAddress?.emailAddress,
       });
       setInterview(res.data);

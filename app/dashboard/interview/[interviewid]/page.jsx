@@ -21,7 +21,7 @@ const Interview = ({ params }) => {
   async function getQuestionAndAnswer() {
     try {
       const response = await axios.get(
-        `http://localhost:3000/api/addjobinfo/${params.interviewid}`
+        `${process.env.NEXT_PUBLIC_BASE_URL}/api/addjobinfo/${params.interviewid}`
       );
       dispatch(addInterviewInfo(response.data));
     } catch (error) {
