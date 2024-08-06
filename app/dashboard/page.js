@@ -1,4 +1,5 @@
 import AddNewInterView from "../_components/AddNewInterView";
+import InterviewList from "./interview/[interviewid]/start/_components/InterviewList";
 
 const Dashboard = () => {
   return (
@@ -8,6 +9,7 @@ const Dashboard = () => {
       <div className="grid grid-cols-1 md:grid-cols-3 mt-5">
         <AddNewInterView />
       </div>
+      <InterviewList/>
     </div>
   );
 };

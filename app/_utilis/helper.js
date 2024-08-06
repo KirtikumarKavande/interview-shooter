@@ -12,3 +12,17 @@ export async function jobFeedBack(question, userAnswer) {
 
 
 }
+
+export function dateConverter(isoDateString){
+    const date = new Date(isoDateString);
+
+    // Extract individual date components
+    const day = date.getUTCDate();
+    const month = date.getUTCMonth() + 1; // Months are zero-indexed
+    const year = date.getUTCFullYear();
+    
+    // Format the date as "date-month-year"
+    const formattedDate = `${String(day).padStart(2, '0')}-${String(month).padStart(2, '0')}-${year}`;
+    
+    return formattedDate
+}
