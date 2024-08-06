@@ -8,18 +8,14 @@ const Layout = ({ children }) => {
           <section className="relative flex h-32 items-end bg-gray-900 lg:col-span-5 lg:h-full xl:col-span-6">
             <img
               alt=""
-              src="./images/authInterview.jpg"
+              src="/images/mike.jpg"
+
+              // src="./images/authInterview.jpg"
               className="absolute inset-0 h-full w-full cover opacity-80"
             />
 
             <div className="hidden lg:relative lg:block lg:p-12">
-              <img
-                width="100"
-                height="100"
-                className="mx-auto"
-                src="https://img.icons8.com/external-xnimrodx-lineal-color-xnimrodx/64/external-interview-communication-xnimrodx-lineal-color-xnimrodx.png"
-                alt="external-interview-communication-xnimrodx-lineal-color-xnimrodx"
-              />
+             
 
               <h2 className="mt-6 text-2xl font-bold text-white sm:text-3xl md:text-4xl">
                 Welcome to Interview Shooter
