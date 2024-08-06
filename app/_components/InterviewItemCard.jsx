@@ -4,7 +4,6 @@ import { Button } from '@/components/ui/button'
 import { useRouter } from 'next/navigation'
 
 const InterviewItemCard = ({interviewInfo}) => {
-    console.log(interviewInfo)
    const router= useRouter()
   return (
     <div className='border shadow-sm rounded-lg p-3'>
