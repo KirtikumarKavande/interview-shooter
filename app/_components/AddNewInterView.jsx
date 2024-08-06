@@ -10,9 +10,11 @@ const AddNewInterView = () => {
     setIsOpen(!isOpen);
   };
   return (
-    <div className="p-7 border rounded-lg bg-secondary hover:scale-105 hover:shadow-md cursor-pointer transition-all">
+    <div 
+    onClick={handleDialogToggle}
+    
+    className="p-7 border rounded-lg bg-secondary hover:scale-105 hover:shadow-md cursor-pointer transition-all">
       <h2
-        onClick={handleDialogToggle}
         className="font-bold text-lg text-center flex items-center gap-4"
       >
         <img
