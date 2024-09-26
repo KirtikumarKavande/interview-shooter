@@ -7,7 +7,15 @@ export async function jobInformation(JobPosition, JobDescription, yearOfExperien
 
 }
 export async function jobFeedBack(question, userAnswer) {
-    let str = `This is question ${question},this is answer from user ${userAnswer}, give feedback to user according to his answer , provide rating out of 5 also give ideal answer of it 3-4 lines give answer in json format like feedback:"",rating:"",idealAnswer:"" and note that if no answer given from user then just provide rating as 0 and your ideal answer, imp thing  give feedback as you didn't answered the question `
+    let str =  `This is question ${question}, this is answer from user ${userAnswer}. Give feedback to user according to their answer, provide a rating out of 5, and also give an ideal answer of 3-4 lines. Give the answer in JSON format like this:
+
+    {
+      "feedback": "",
+      "rating": "",
+      "idealAnswer": ""
+    }
+    
+    Note that if no answer is given from the user, then just provide a rating of 0 and your ideal answer. An important thing to remember is to give feedback as "You didn't answer the question" if the user's answer is empty.`
     return await runGeminiScript(str)
 
 

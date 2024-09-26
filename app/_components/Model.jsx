@@ -10,7 +10,7 @@ import {
 const Model = ({ children, isOpen, setIsOpen }) => {
   return (
     <div>
-      <Dialog open={isOpen} onOpenChange={setIsOpen}>
+      <Dialog open={isOpen} onOpenChange={setIsOpen} >
         <DialogContent>
           <DialogHeader>
             <DialogDescription>{children}</DialogDescription>

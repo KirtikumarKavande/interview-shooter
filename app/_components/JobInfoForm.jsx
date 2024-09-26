@@ -64,7 +64,7 @@ const JobInfoForm = () => {
     }
   }
   return (
-    <div>
+    <div onClick={(e)=>{e.stopPropagation()}}>
       <div className="mx-auto max-w-screen-xl px-4 py-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-lg">
           <div className="text-center text-2xl font-bold text-indigo-600 sm:text-3xl">
@@ -77,7 +77,6 @@ const JobInfoForm = () => {
 
           <form
             onSubmit={handleSubmit}
-            action="#"
             className="mb-0 mt-6 space-y-4 rounded-lg p-4 shadow-xl sm:p-6 lg:p-8"
           >
             <div>

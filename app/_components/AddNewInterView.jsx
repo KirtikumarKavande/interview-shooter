@@ -23,7 +23,7 @@ const AddNewInterView = () => {
         />
         Add Interview
       </h2>
-      <Model isOpen={isOpen} setIsOpen={setIsOpen}>
+      <Model  isOpen={isOpen} setIsOpen={setIsOpen}>
         <JobInfoForm />
       </Model>
     </div>
